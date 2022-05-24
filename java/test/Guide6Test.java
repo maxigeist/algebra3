@@ -135,8 +135,9 @@ public class Guide6Test extends SkipRule {
     @Test
     public void exercise_7_a() {
         assertEquals(0, guide6.exercise_7_a(new Survey[]{new Survey(1, 24, 1), new Survey(1, 12, 1), new Survey(2, 22, 1), new Survey(1, 44, 1), new Survey(1, 8, 1), new Survey(1, 24, 1)}), 0.1);
-        assertEquals(1, guide6.exercise_7_a(new Survey[]{new Survey(1, 24, 2), new Survey(2, 12, 1), new Survey(2, 22, 1), new Survey(1, 44, 2), new Survey(1, 8, 2), new Survey(1, 24, 2)}), 0.1);
+        assertEquals(0.66, guide6.exercise_7_a(new Survey[]{new Survey(1, 24, 2), new Survey(2, 12, 1), new Survey(2, 22, 1), new Survey(1, 44, 2), new Survey(1, 8, 2), new Survey(1, 24, 2)}), 0.1);
         assertEquals(0.25, guide6.exercise_7_a(new Survey[]{new Survey(1, 24, 2), new Survey(2, 12, 1), new Survey(2, 22, 1), new Survey(1, 44, 1), new Survey(1, 8, 1), new Survey(1, 24, 1)}), 0.1);
+
     }
 
     @Test

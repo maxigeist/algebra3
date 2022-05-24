@@ -9,7 +9,15 @@ public class Guide6Solution implements Guide6 {
 
     @Override
     public int exercise_1_a(int[] a) {
-        throw new UnsupportedOperationException("TODO");
+        int sum = 0;
+        if (a.length == 0) {
+            return 0;
+        } else {
+            for (int i = 0; i < a.length; i++) {
+                sum += a[i];
+            }
+        }
+        return sum;
     }
 
     @Override
@@ -74,8 +82,24 @@ public class Guide6Solution implements Guide6 {
 
     @Override
     public boolean exercise_4(int[] a) {
-        throw new UnsupportedOperationException("TODO");
+        for(int i=0; i<a.length;i++) {
+            int sum = 0;
+            for (int j = 0; j <= i; j++) {
+                sum += a[j];
+
+                if (j == a.length - 1) {
+                    if (sum !=0) {
+                        return false;
+                    }
+                }
+            }
+            if (sum < 0) {
+                return false;
+            }
+        }
+        return true;
     }
+
 
     @Override
     public List<Integer> exercise_5_a(Infraction[] a) {
@@ -92,23 +116,54 @@ public class Guide6Solution implements Guide6 {
         throw new UnsupportedOperationException("TODO");
     }
 
+
     @Override
     public int[] exercise_6(int[] infraction) {
-        throw new UnsupportedOperationException("TODO");
+        if (infraction.length != 0) {
+            int[] a = new int[infraction.length];
+            for (int i = 0; i < a.length; i++) {
+                int sum = 0;
+                for (int j = 0; j <= i; j++) {
+                    sum += infraction[j];
+                }
+                a[i] = sum;
+            }
+            return a;
+        }
+        return infraction;
     }
 
     @Override
     public double exercise_7_a(Survey[] surveys) {
-        throw new UnsupportedOperationException("TODO");
+        int counter = 0;
+        for(int i=0; i<surveys.length;i++){
+            if(surveys[i].sex == 2 && surveys[i].type == 1){
+                counter++;
+            }
+        }
+        double final_number = (double)counter/surveys.length;
+        return final_number;
+
     }
 
     @Override
     public double exercise_7_b(Survey[] surveys) {
-        throw new UnsupportedOperationException("TODO");
+        int counter = 0;
+        for(int i=0; i<surveys.length;i++){
+            counter+=surveys[i].age;
+        }
+        double num = (double) counter/surveys.length;
+        return num;
     }
 
     @Override
     public int exercise_7_c(Survey[] surveys) {
-        throw new UnsupportedOperationException("TODO");
+        int counter = 0;
+        for(int i=0; i<surveys.length;i++){
+            if(surveys[i].age > 21 && surveys[i].type == 2){
+                counter++;
+            }
+        }
+        return counter;
     }
 }
