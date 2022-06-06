@@ -1,5 +1,6 @@
 package tp3;
 
+import tp3.utils.Matrix;
 import tp3.utils.MatrixMatrixOperation;
 import tp3.utils.MatrixVectorOperation;
 
@@ -14,7 +15,11 @@ public class Guide7Solution implements Guide7 {
 
     @Override
     public int exercise_1_b(int[][] A) {
-        throw new UnsupportedOperationException("TODO");
+        int sum = 0;
+        for(int i = 0, j= A.length -1 ; i < A.length && j > -1; i++,j--){
+            sum += A[j][i];
+        }
+        return sum;
     }
 
     @Override
@@ -53,12 +58,41 @@ public class Guide7Solution implements Guide7 {
 
     @Override
     public boolean exercise_2_a(int[][] A) {
-        throw new UnsupportedOperationException("TODO");
+        for(int i = 0, a = A[0][0] ; i < A.length ; i++){
+            for(int j = 0; j < A.length; j++){
+                if(!(A[i][j] == A[j][i])){
+                    return false;
+                }
+            }
+            if(a != A[i][i]){
+                return false;
+            }
+        }
+        return true;
+    }
+    private int module(int a ){
+        if(a > 0){
+            return a;
+        }
+        else
+            return a * (-1);
+
     }
 
     @Override
     public boolean exercise_2_b(int[][] A) {
-        throw new UnsupportedOperationException("TODO");
+        for(int i=0; i< A.length;i++){
+            int sum = 0;
+            for(int j=0; j<A.length;j++){
+                if(i!=j){
+                    sum+= module(A[i][j]);
+                }
+            }
+            if(module(A[i][i]) < sum){
+                return false;
+            }
+        }
+        return true;
     }
 
     @Override
@@ -68,7 +102,15 @@ public class Guide7Solution implements Guide7 {
 
     @Override
     public MatrixMatrixOperation exercise_3_a_ii(MatrixMatrixOperation op) {
-        throw new UnsupportedOperationException("TODO");
+        int[][] matrix = new int[op.getMatrix1().getRows()][op.getMatrix1().getColumns()];
+        Matrix sumOfMatrices = new Matrix(matrix);
+        for (int i = 0; i <op.getMatrix1().getRows() ; i++) {
+            for (int j = i; j < op.getMatrix1().getColumns(); j++) {
+                matrix[i][j] = op.getMatrix1().getValue(i,j) + op.getMatrix2().getValue(i,j);
+            }
+        }
+        op.setResult(sumOfMatrices);
+        return op;
     }
 
     @Override
