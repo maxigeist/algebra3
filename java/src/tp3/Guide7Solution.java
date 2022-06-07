@@ -3,6 +3,7 @@ package tp3;
 import tp3.utils.MatrixMatrixOperation;
 import tp3.utils.MatrixVectorOperation;
 
+import java.util.Arrays;
 import java.util.List;
 
 public class Guide7Solution implements Guide7 {
@@ -126,8 +127,38 @@ public class Guide7Solution implements Guide7 {
         throw new UnsupportedOperationException("TODO");
     }
 
+    public double lambdaCalculator(double[] a1, double[] a2){
+        double result = 0;
+        double divisor = 0;
+        for(int i=0; i<a1.length;i++){
+            result+= (a1[i] * a2[i]);
+            divisor += (a2[i] * a2[i]);
+        }
+        result = -(result/divisor);
+        return result;
+    }
+
+
     @Override
     public List<double[]> exercise_4(List<double[]> A) {
-        throw new UnsupportedOperationException("TODO");
+        double[][] a = new double[A.size()][];
+        a[0] = A.get(0);
+        for(int i= 1; i < A.size(); i++){
+            double[] r = A.get(i);
+            a[i] = r;
+            for(int j=0; j<=i-1; j++) {
+                double[] aux = new double[A.get(0).length];
+                double lambda = lambdaCalculator(a[i], a[j]);
+                for (int k = 0; k < r.length; k++) {
+                    aux[k] = a[j][k] * lambda;
+                }
+            for(int t= 0; t< aux.length; t++){
+                a[i][t] += aux[t];
+            }
+            }
+
+        }
+        return Arrays.stream(a).toList();
+
     }
 }
